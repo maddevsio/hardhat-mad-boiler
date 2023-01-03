@@ -4,13 +4,9 @@
     "description": "",
     "license": "Apache-2.0",
     "dependencies": {
-        "@openzeppelin/contracts": "^4.8.0",
-        "add": "^2.0.6",
-        "npm": "^9.2.0",
-        "readline-sync": "^1.4.10"
+        "@openzeppelin/contracts": "^4.8.0"
     },
     "devDependencies": {
-        "@ethersproject/hardware-wallets": "^5.7.0",
         "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
         "@nomicfoundation/hardhat-toolbox": "^2.0.0",
         "@nomiclabs/hardhat-ethers": "^2.2.1",
