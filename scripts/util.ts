@@ -38,6 +38,12 @@ export async function makeSnapshot(snapshot: Snapshot | undefined): Promise<Snap
     return fresh;
 }
 
+export async function backToSnapshot(snapshot: Snapshot): Promise<Snapshot> {
+    await hre.network.provider.send("evm_revert", [snapshot.initial]);
+
+    return makeSnapshot(snapshot);
+}
+
 export async function mine(options: MineOptions): Promise<void> {
     if (options.increaseTime !== undefined) {
         await ethers.provider.send("evm_increaseTime", [options.increaseTime]);
