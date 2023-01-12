@@ -6,3 +6,8 @@ export type NetworkState = `0x${"" | Digit}${Byte}`;
 export type Snapshot = {
     initial: NetworkState;
 };
+
+export type MineOptions = {
+    increaseTime?: number;
+    nextBlockTimestamp?: number;
+}
