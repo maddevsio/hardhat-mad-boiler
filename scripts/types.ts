@@ -10,4 +10,4 @@ export type Snapshot = {
 export type MineOptions = {
     increaseTime?: number;
     nextBlockTimestamp?: number;
-}
+};

@@ -1,9 +1,17 @@
-import { BigNumber, BigNumberish, ContractTransaction, utils, Wallet } from "ethers";
+import {
+    BigNumber,
+    BigNumberish,
+    ContractTransaction,
+    utils,
+    Wallet
+} from "ethers";
 import hre, { ethers } from "hardhat";
 import { MineOptions, Snapshot } from "./types";
 
 export async function currentTimestamp() {
-    const block = await ethers.provider.getBlock(ethers.provider.getBlockNumber());
+    const block = await ethers.provider.getBlock(
+        ethers.provider.getBlockNumber()
+    );
 
     return block.timestamp;
 }
@@ -26,9 +34,11 @@ export function getRandomAddress() {
     return Wallet.createRandom().address;
 }
 
-export async function makeSnapshot(snapshot: Snapshot | undefined): Promise<Snapshot> {
+export async function makeSnapshot(
+    snapshot: Snapshot | undefined
+): Promise<Snapshot> {
     const fresh = await hre.network.provider.send("evm_snapshot");
-  
+
     if (snapshot) {
         snapshot.initial = fresh;
 
@@ -50,7 +60,9 @@ export async function mine(options: MineOptions): Promise<void> {
     }
 
     if (options.nextBlockTimestamp !== undefined) {
-        await ethers.provider.send("evm_setNextBlockTimestamp", [options.nextBlockTimestamp]);
+        await ethers.provider.send("evm_setNextBlockTimestamp", [
+            options.nextBlockTimestamp
+        ]);
     }
 
     return ethers.provider.send("evm_mine", []);

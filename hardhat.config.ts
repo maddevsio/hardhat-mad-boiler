@@ -3,8 +3,6 @@ import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-solhint";
-import "@openzeppelin/hardhat-defender";
-import "@openzeppelin/hardhat-upgrades";
 import * as dotenv from "dotenv";
 import "hardhat-abi-exporter";
 import "hardhat-contract-sizer";
@@ -16,13 +14,13 @@ dotenv.config();
 
 const config: HardhatUserConfig = {
     gasReporter: {
-        enabled: Boolean(process.env.REPORT_GAS),
+        enabled: Boolean(process.env.REPORT_GAS)
     },
     contractSizer: {
         alphaSort: true,
         disambiguatePaths: false,
         runOnCompile: false,
-        strict: true,
+        strict: true
     },
     abiExporter: {
         path: "./abi",
@@ -35,18 +33,18 @@ const config: HardhatUserConfig = {
              */
             // ":ERC20",
         ],
-        format: "json",
+        format: "json"
     },
     networks: {
         ethereum: {
             url: process.env.ETHEREUM_URL || "",
-            chainId: 1,
-        },
+            chainId: 1
+        }
     },
     etherscan: {
         apiKey: {
-            mainnet: process.env.API_KEY_ETHERSCAN || "",
-        },
+            mainnet: process.env.API_KEY_ETHERSCAN || ""
+        }
     },
     solidity: {
         compilers: [
@@ -55,12 +53,12 @@ const config: HardhatUserConfig = {
                 settings: {
                     optimizer: {
                         enabled: true,
-                        runs: 1000,
-                    },
-                },
-            },
-        ],
-    },
+                        runs: 1000
+                    }
+                }
+            }
+        ]
+    }
 };
 
 export default config;

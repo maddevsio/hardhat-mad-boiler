@@ -4,7 +4,7 @@
     "description": "",
     "license": "Apache-2.0",
     "dependencies": {
-        "@openzeppelin/contracts": "^4.8.0"
+        "@openzeppelin/contracts": "^4.8.1"
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
@@ -12,16 +12,15 @@
         "@nomiclabs/hardhat-ethers": "^2.2.2",
         "@nomiclabs/hardhat-etherscan": "^3.1.5",
         "@nomiclabs/hardhat-solhint": "^3.0.0",
-        "@types/readline-sync": "^1.4.4",
-        "@typescript-eslint/eslint-plugin": "^5.48.1",
-        "@typescript-eslint/parser": "^5.48.1",
+        "@typescript-eslint/eslint-plugin": "^5.48.2",
+        "@typescript-eslint/parser": "^5.48.2",
         "dotenv": "^16.0.3",
         "ethers": "^5.7.2",
         "hardhat": "^2.12.6",
         "hardhat-abi-exporter": "^2.10.1",
-        "hardhat-contract-sizer": "^2.6.1",
+        "hardhat-contract-sizer": "^2.7.0",
         "hardhat-gas-reporter": "^1.0.9",
-        "prettier": "^2.8.2",
+        "prettier": "^2.8.3",
         "prettier-plugin-solidity": "^1.1.1",
         "solidity-coverage": "^0.8.2",
         "typescript": "^4.9.4"
@@ -31,7 +30,6 @@
         "clean": "npx hardhat clean",
         "lint": "eslint scripts/ test/ --ext=ts",
         "lint:fix": "eslint scripts/ test/ --ext=ts --fix",
-        "test": "npx hardhat test",
-        "abi:make": "npx hardhat compile && npx hardhat run scripts/tasks/abi_make.ts"
+        "test": "npx hardhat test"
     }
 }
