@@ -13,32 +13,32 @@ contract Vault {
 
     mapping(address => uint) public balanceOf;
 
-    constructor(address _token) {
-        token = IERC20(_token);
+    constructor(address token_) {
+        token = IERC20(token_);
     }
 
-    function deposit(uint _amount) external {
+    function deposit(uint amount_) external {
         uint shares;
 
         if (totalSupply == 0) {
-            shares = _amount;
+            shares = amount_;
         } else {
-            shares = (_amount * totalSupply) / token.balanceOf(address(this));
+            shares = (amount_ * totalSupply) / token.balanceOf(address(this));
         }
 
         totalSupply += shares;
 
         balanceOf[msg.sender] += shares;
 
-        token.safeTransferFrom(msg.sender, address(this), _amount);
+        token.safeTransferFrom(msg.sender, address(this), amount_);
     }
 
-    function withdraw(uint _shares) external {
-        uint amount = (_shares * token.balanceOf(address(this))) / totalSupply;
+    function withdraw(uint shares_) external {
+        uint amount = (shares_ * token.balanceOf(address(this))) / totalSupply;
 
-        totalSupply -= _shares;
+        totalSupply -= shares_;
 
-        balanceOf[msg.sender] -= _shares;
+        balanceOf[msg.sender] -= shares_;
 
         token.safeTransfer(msg.sender, amount);
     }
