@@ -7,16 +7,37 @@
 
 This boilerplate contains preconfigured HardHat Ethereum development environment with additional tools, providing an easy start for a new smart contract project.
 
-## Features
+## Benefits
 
--   TypeScript ready - get advantages of type inference system to avoid bugs. Make better quality scripts ans tests.
--   Preconfigured linter and formatter for TypeScript and Solidity - reduce efforts to keep your codebase clean (via an automation) and focus on development product features instead.
--   Support for `.env` files - manage credentials and access them for scripts and tests easily.
--   GitHub Actions workflow - apply [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) practice without additional efforts.
+-   Use preconfigured linter and formatter for TypeScript and Solidity would reduce efforts to keep codebase clean (via an automation) and let you focus on development of product features instead.
+-   Get advantages of TypeScript type inference system to avoid bugs in scripts and tests, therefore improving their quality.
+-   Get support for `.env` files to manage credentials and access them from scripts and tests easily.
+-   Use GitHub Actions workflow to apply [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) practice without additional efforts.
+-   Get enhanced development experience by using suggested IDE extensions. Template contains initial configuration.
 
 ## Usage
 
-## Plugins and notable dependencies
+1. Preinstall NodeJS of [compatible version](/.nvmrc). If there is a need to run different NodeJS versions, consider using [NVM](https://github.com/nvm-sh/nvm) or similar tool for your platform.
+    ```bash
+    nvm install
+    nvm use
+    node --version
+    npm --version
+    ```
+2. Create new repository, [using this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+3. Clone newly created repository and switch to its directory.
+4. Install dependencies:
+    ```bash
+    npm install
+    ```
+5. Install [Visual Studio Code](https://code.visualstudio.com/) IDE and [extensions](#ide-extensions).
+6. Tune settings according to your personal preference and start your development.
+
+## Plugins and dependencies
+
+Preinstall NodeJS of compatible version. If there is a need to run different NodeJS versions, consider using NVM or similar tool, that is available for your platform.
+
+### Dependencies
 
 This project template relies on following notable dependencies:
 
@@ -45,9 +66,18 @@ This project template relies on following notable dependencies:
 -   [@nomiclabs/hardhat-etherscan](https://www.npmjs.com/package/@nomiclabs/hardhat-etherscan)
     -   EtherScan smart-contract verification service support for HardHat.
 
-We highly recommend using [Visual Studio Code](https://code.visualstudio.com/) IDE alongside with following extensions to improve development experience:
+### IDE extensions
+
+We recommend using [Visual Studio Code](https://code.visualstudio.com/) IDE alongside with following extensions to enhance development experience:
 
 -   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 -   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 -   [Solidity + Hardhat](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) or [solidity](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
 -   [Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens)
+
+## Further reading
+
+-   [HardHat documentation](https://hardhat.org/docs)
+-   [OpenZeppelin documentation](https://docs.openzeppelin.com/)
+-   [Solidity documentation](https://docs.soliditylang.org/)
+-   [TypeScript documentation](https://www.typescriptlang.org/docs/)
