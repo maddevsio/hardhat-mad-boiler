@@ -1,21 +1,13 @@
-import "@nomicfoundation/hardhat-chai-matchers";
 import "@nomicfoundation/hardhat-toolbox";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-solhint";
 import * as dotenv from "dotenv";
 import "hardhat-abi-exporter";
 import "hardhat-contract-sizer";
-import "hardhat-gas-reporter";
 import { HardhatUserConfig } from "hardhat/config";
-import "solidity-coverage";
 
 dotenv.config();
 
 const config: HardhatUserConfig = {
-    gasReporter: {
-        enabled: Boolean(process.env.REPORT_GAS)
-    },
     contractSizer: {
         alphaSort: true,
         disambiguatePaths: false,
