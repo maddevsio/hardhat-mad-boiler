@@ -35,8 +35,6 @@ This boilerplate contains preconfigured HardHat Ethereum development environment
 
 ## Plugins and dependencies
 
-Preinstall NodeJS of compatible version. If there is a need to run different NodeJS versions, consider using NVM or similar tool, that is available for your platform.
-
 ### Dependencies
 
 This project template relies on following notable dependencies:
