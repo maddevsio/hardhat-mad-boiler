@@ -33,7 +33,7 @@ This boilerplate contains preconfigured HardHat Ethereum development environment
 5. Install [Visual Studio Code](https://code.visualstudio.com/) IDE and [extensions](#ide-extensions).
 6. Tune settings according to your personal preference and start your development.
 
-## Plugins and dependencies
+## Dependencies and IDE extensions
 
 ### Dependencies
 
