@@ -2,9 +2,9 @@ name: CI
 
 on:
     push:
-        branches: ["main"]
+        branches: ['main']
     pull_request:
-        branches: ["main"]
+        branches: ['main']
 
 jobs:
     build:
@@ -21,11 +21,11 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "npm"
+                  cache: 'npm'
 
             - name: Install, lint, test and generate coverage report
               run: |
                   npm install
                   npm run lint
-                  npx hardhat compile
-                  npx hardhat coverage
+                  npm run compile
+                  npm run test:coverage

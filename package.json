@@ -30,6 +30,7 @@
         "clean": "npx hardhat clean",
         "lint": "eslint scripts/ test/ --ext=ts",
         "lint:fix": "eslint scripts/ test/ --ext=ts --fix",
-        "test": "npx hardhat test"
+        "test": "npx hardhat test",
+        "test:coverage": "npx hardhat coverage"
     }
 }

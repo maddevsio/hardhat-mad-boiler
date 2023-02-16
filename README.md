@@ -40,7 +40,7 @@ This boilerplate contains preconfigured HardHat Ethereum development environment
 This project template relies on following notable dependencies:
 
 -   [@openzeppelin/contracts](https://www.npmjs.com/package/@openzeppelin/contracts)
-    -   Widely used primitives and components to develop smart-contracts. In case if you prefer to use upgradability, consider to use [@openzeppelin/contracts-upgradeable](https://www.npmjs.com/package/@openzeppelin/contracts-upgradeable).
+    -   Widely used primitives and components to develop smart-contracts. In case if you prefer to use upgradability, consider to use [@openzeppelin/contracts-upgradeable](https://www.npmjs.com/package/@openzeppelin/contracts-upgradeable) instead.
 -   [dotenv](https://www.npmjs.com/package/dotenv)
     -   Support for `.env` files in tests and scripts.
 -   [ethers](https://www.npmjs.com/package/ethers)
