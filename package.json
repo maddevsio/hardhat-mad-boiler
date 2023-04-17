@@ -1,35 +1,39 @@
 {
     "name": "hardhat-mad-boiler",
     "version": "1.0.0",
-    "description": "",
+    "description": "Ready-to-use preconfigured HardHat Ethereum development environment with additional tools for smart-contract development",
     "license": "Apache-2.0",
     "dependencies": {
-        "@openzeppelin/contracts": "^4.8.2"
+        "@openzeppelin/contracts": "^4.8.3"
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
         "@nomicfoundation/hardhat-toolbox": "^2.0.2",
-        "@nomiclabs/hardhat-ethers": "^2.2.2",
+        "@nomiclabs/hardhat-ethers": "^2.2.3",
         "@nomiclabs/hardhat-etherscan": "^3.1.7",
-        "@nomiclabs/hardhat-solhint": "^3.0.0",
-        "@typescript-eslint/eslint-plugin": "^5.57.1",
-        "@typescript-eslint/parser": "^5.57.1",
+        "@nomiclabs/hardhat-solhint": "^3.0.1",
+        "@typescript-eslint/eslint-plugin": "^5.58.0",
+        "@typescript-eslint/parser": "^5.58.0",
         "dotenv": "^16.0.3",
         "ethers": "^5.7.2",
-        "hardhat": "^2.13.0",
+        "hardhat": "^2.14.0",
         "hardhat-abi-exporter": "^2.10.1",
         "hardhat-contract-sizer": "^2.8.0",
         "hardhat-gas-reporter": "^1.0.9",
         "prettier": "^2.8.7",
         "prettier-plugin-solidity": "^1.1.3",
         "solidity-coverage": "^0.8.2",
-        "typescript": "^5.0.3"
+        "typescript": "^5.0.4"
     },
     "scripts": {
         "compile": "npx hardhat compile",
         "clean": "npx hardhat clean",
-        "lint": "eslint scripts/ test/ --ext=ts",
-        "lint:fix": "eslint scripts/ test/ --ext=ts --fix",
+        "lint:ts": "eslint scripts/ test/ --ext=ts",
+        "lint:sol": "solhint 'contracts/**/*.sol'",
+        "lint": "npm run lint:sol && npm run lint:ts",
+        "lint:fix": "npm run lint:sol:fix && npm run lint:ts:fix",
+        "lint:ts:fix": "eslint scripts/ test/ --ext=ts --fix",
+        "lint:sol:fix": "solhint 'contracts/**/*.sol' --fix",
         "test": "npx hardhat test",
         "test:coverage": "npx hardhat coverage"
     }
