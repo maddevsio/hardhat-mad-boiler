@@ -1,13 +1,13 @@
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
+import { Signer } from "ethers";
 import { ethers } from "hardhat";
 import { deployTesting } from "../scripts/util";
 import { MockERC20, Vault } from "../typechain-types";
 
 describe("Vault", () => {
-    let owner: SignerWithAddress;
-    let userA: SignerWithAddress;
-    let userB: SignerWithAddress;
+    let owner: Signer;
+    let userA: Signer;
+    let userB: Signer;
 
     let protocol: { vault: Vault; erc20: MockERC20 };
 
@@ -20,45 +20,39 @@ describe("Vault", () => {
 
         await protocol.erc20
             .connect(userA)
-            .approve(
-                protocol.vault.address,
-                protocol.erc20.balanceOf(userA.address)
-            );
+            .approve(protocol.vault, await protocol.erc20.balanceOf(userA));
 
         await protocol.erc20.connect(userB).mint(100);
 
         await protocol.erc20
             .connect(userB)
-            .approve(
-                protocol.vault.address,
-                protocol.erc20.balanceOf(userB.address)
-            );
+            .approve(protocol.vault, await protocol.erc20.balanceOf(userB));
     });
 
     it("deposit()", async () => {
-        const userBalanceA = await protocol.erc20.balanceOf(userA.address);
-        const userBalanceB = await protocol.erc20.balanceOf(userB.address);
+        const userBalanceA = await protocol.erc20.balanceOf(userA);
+        const userBalanceB = await protocol.erc20.balanceOf(userB);
 
         await protocol.vault.connect(userA).deposit(userBalanceA);
         await protocol.vault.connect(userB).deposit(userBalanceB);
 
-        expect(await protocol.erc20.balanceOf(userA.address)).eq(0);
-        expect(await protocol.erc20.balanceOf(userB.address)).eq(0);
-        expect(await protocol.erc20.balanceOf(protocol.vault.address)).eq(
-            userBalanceA.add(userBalanceB)
+        expect(await protocol.erc20.balanceOf(userA)).eq(0);
+        expect(await protocol.erc20.balanceOf(userB)).eq(0);
+        expect(await protocol.erc20.balanceOf(protocol.vault)).eq(
+            userBalanceA + userBalanceB
         );
 
-        expect(await protocol.vault.balanceOf(userA.address)).eq(userBalanceA);
-        expect(await protocol.vault.balanceOf(userB.address)).eq(userBalanceB);
+        expect(await protocol.vault.balanceOf(userA)).eq(userBalanceA);
+        expect(await protocol.vault.balanceOf(userB)).eq(userBalanceB);
 
         expect(await protocol.vault.totalSupply()).eq(
-            userBalanceA.add(userBalanceB)
+            userBalanceA + userBalanceB
         );
     });
 
     it("withdraw()", async () => {
-        const userBalanceA = await protocol.erc20.balanceOf(userA.address);
-        const userBalanceB = await protocol.erc20.balanceOf(userB.address);
+        const userBalanceA = await protocol.erc20.balanceOf(userA);
+        const userBalanceB = await protocol.erc20.balanceOf(userB);
 
         /**
          * Users A and B deposit funds
@@ -67,7 +61,7 @@ describe("Vault", () => {
         await protocol.vault.connect(userB).deposit(userBalanceB);
 
         expect(await protocol.vault.totalSupply()).eq(
-            userBalanceA.add(userBalanceB)
+            userBalanceA + userBalanceB
         );
 
         /**
@@ -75,12 +69,10 @@ describe("Vault", () => {
          */
         await protocol.vault.connect(userA).withdraw(userBalanceA);
 
-        expect(await protocol.erc20.balanceOf(userA.address)).eq(userBalanceA);
-        expect(await protocol.erc20.balanceOf(protocol.vault.address)).eq(
-            userBalanceB
-        );
+        expect(await protocol.erc20.balanceOf(userA)).eq(userBalanceA);
+        expect(await protocol.erc20.balanceOf(protocol.vault)).eq(userBalanceB);
 
-        expect(await protocol.vault.balanceOf(userA.address)).eq(0);
+        expect(await protocol.vault.balanceOf(userA)).eq(0);
 
         expect(await protocol.vault.totalSupply()).eq(userBalanceB);
 
@@ -89,10 +81,10 @@ describe("Vault", () => {
          */
         await protocol.vault.connect(userB).withdraw(userBalanceB);
 
-        expect(await protocol.erc20.balanceOf(userB.address)).eq(userBalanceB);
-        expect(await protocol.erc20.balanceOf(protocol.vault.address)).eq(0);
+        expect(await protocol.erc20.balanceOf(userB)).eq(userBalanceB);
+        expect(await protocol.erc20.balanceOf(protocol.vault)).eq(0);
 
-        expect(await protocol.vault.balanceOf(userB.address)).eq(0);
+        expect(await protocol.vault.balanceOf(userB)).eq(0);
 
         expect(await protocol.vault.totalSupply()).eq(0);
     });

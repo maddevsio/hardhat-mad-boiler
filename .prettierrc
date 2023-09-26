@@ -25,5 +25,6 @@
                 "bracketSpacing": true
             }
         }
-    ]
+    ],
+    "plugins": ["prettier-plugin-solidity"]
 }
